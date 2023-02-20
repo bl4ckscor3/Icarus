@@ -1,8 +1,19 @@
 package dev.cammiescorner.icarus.client.renderers;
 
+import java.util.Locale;
+import java.util.Optional;
+
+import org.jetbrains.annotations.Nullable;
+
 import dev.cammiescorner.icarus.Icarus;
 import dev.cammiescorner.icarus.client.IcarusClient;
-import dev.cammiescorner.icarus.client.models.*;
+import dev.cammiescorner.icarus.client.models.DiscordsWingsModel;
+import dev.cammiescorner.icarus.client.models.FeatheredWingsModel;
+import dev.cammiescorner.icarus.client.models.FlandresWingsModel;
+import dev.cammiescorner.icarus.client.models.LeatherWingsModel;
+import dev.cammiescorner.icarus.client.models.LightWingsModel;
+import dev.cammiescorner.icarus.client.models.WingEntityModel;
+import dev.cammiescorner.icarus.client.models.ZanzasWingsModel;
 import dev.cammiescorner.icarus.common.items.WingItem;
 import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
@@ -19,12 +30,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Locale;
-import java.util.Optional;
 
 public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
 	private WingEntityModel<T> wingModel;
@@ -47,11 +54,11 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
 
 	@Override
 	public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
-		if(entity instanceof PlayerEntity) {
+		if (entity instanceof PlayerEntity) {
 			Optional<TrinketComponent> component = TrinketsApi.getTrinketComponent(entity);
 
 			component.ifPresent(trinketComponent -> {
-				if(!trinketComponent.isEquipped(stack -> stack.getItem() instanceof WingItem) && Icarus.HAS_POWERED_FLIGHT.test(entity)) {
+				if (!trinketComponent.isEquipped(stack -> stack.getItem() instanceof WingItem) && Icarus.HAS_POWERED_FLIGHT.test(entity)) {
 					float r1 = 1F;
 					float g1 = 1F;
 					float b1 = 1F;
@@ -74,7 +81,7 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
 					trinketComponent.getAllEquipped().forEach(pair -> {
 						ItemStack stack = pair.getRight();
 
-						if(stack.getItem() instanceof WingItem wingItem) {
+						if (stack.getItem() instanceof WingItem wingItem) {
 							float[] primaryColour = wingItem.getPrimaryColour().getColorComponents();
 							float[] secondaryColour = wingItem.getSecondaryColour().getColorComponents();
 							float r1 = primaryColour[0];
@@ -84,19 +91,19 @@ public class WingsFeatureRenderer<T extends LivingEntity, M extends EntityModel<
 							float g2 = secondaryColour[1];
 							float b2 = secondaryColour[2];
 
-							String wingType = wingItem.getWingType() != WingItem.WingType.UNIQUE ? wingItem.getWingType().toString().toLowerCase(Locale.ROOT) : Registry.ITEM.getId(wingItem).getPath().replaceAll("_wings", "");
+							String wingType = wingItem.getWingType() != WingItem.WingType.UNIQUE ? wingItem.getWingType().toString().toLowerCase(Locale.ROOT) : Registries.ITEM.getId(wingItem).getPath().replaceAll("_wings", "");
 
-							if(wingItem.getWingType() == WingItem.WingType.FEATHERED || wingItem.getWingType() == WingItem.WingType.MECHANICAL_FEATHERED)
+							if (wingItem.getWingType() == WingItem.WingType.FEATHERED || wingItem.getWingType() == WingItem.WingType.MECHANICAL_FEATHERED)
 								wingModel = featheredWings;
-							if(wingItem.getWingType() == WingItem.WingType.DRAGON || wingItem.getWingType() == WingItem.WingType.MECHANICAL_LEATHER)
+							if (wingItem.getWingType() == WingItem.WingType.DRAGON || wingItem.getWingType() == WingItem.WingType.MECHANICAL_LEATHER)
 								wingModel = leatherWings;
-							if(wingItem.getWingType() == WingItem.WingType.LIGHT)
+							if (wingItem.getWingType() == WingItem.WingType.LIGHT)
 								wingModel = lightWings;
-							if(wingType.equals("flandres"))
+							if (wingType.equals("flandres"))
 								wingModel = flandresWings;
-							if(wingType.equals("discords"))
+							if (wingType.equals("discords"))
 								wingModel = discordsWings;
-							if(wingType.equals("zanzas"))
+							if (wingType.equals("zanzas"))
 								wingModel = zanzasWings;
 
 							Identifier layer1 = new Identifier(Icarus.MOD_ID, "textures/entity/" + wingType + "_wings.png");

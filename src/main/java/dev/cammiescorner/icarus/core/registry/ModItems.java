@@ -1,13 +1,14 @@
 package dev.cammiescorner.icarus.core.registry;
 
+import java.util.LinkedHashMap;
+
 import dev.cammiescorner.icarus.Icarus;
 import dev.cammiescorner.icarus.common.items.WingItem;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-
-import java.util.LinkedHashMap;
 
 public class ModItems {
 	//----Item Map----//
@@ -30,7 +31,6 @@ public class ModItems {
 	public static final Item GREEN_FEATHERED_WINGS = create("green_feathered_wings", new WingItem(DyeColor.GREEN, DyeColor.GREEN, WingItem.WingType.FEATHERED));
 	public static final Item RED_FEATHERED_WINGS = create("red_feathered_wings", new WingItem(DyeColor.RED, DyeColor.RED, WingItem.WingType.FEATHERED));
 	public static final Item BLACK_FEATHERED_WINGS = create("black_feathered_wings", new WingItem(DyeColor.BLACK, DyeColor.BLACK, WingItem.WingType.FEATHERED));
-
 	public static final Item WHITE_DRAGON_WINGS = create("white_dragon_wings", new WingItem(DyeColor.WHITE, DyeColor.WHITE, WingItem.WingType.DRAGON));
 	public static final Item ORANGE_DRAGON_WINGS = create("orange_dragon_wings", new WingItem(DyeColor.ORANGE, DyeColor.ORANGE, WingItem.WingType.DRAGON));
 	public static final Item MAGENTA_DRAGON_WINGS = create("magenta_dragon_wings", new WingItem(DyeColor.MAGENTA, DyeColor.PINK, WingItem.WingType.DRAGON));
@@ -47,7 +47,6 @@ public class ModItems {
 	public static final Item GREEN_DRAGON_WINGS = create("green_dragon_wings", new WingItem(DyeColor.GREEN, DyeColor.LIME, WingItem.WingType.DRAGON));
 	public static final Item RED_DRAGON_WINGS = create("red_dragon_wings", new WingItem(DyeColor.RED, DyeColor.YELLOW, WingItem.WingType.DRAGON));
 	public static final Item BLACK_DRAGON_WINGS = create("black_dragon_wings", new WingItem(DyeColor.BLACK, DyeColor.PURPLE, WingItem.WingType.DRAGON));
-
 	public static final Item WHITE_MECHANICAL_FEATHERED_WINGS = create("white_mechanical_feathered_wings", new WingItem(DyeColor.WHITE, DyeColor.WHITE, WingItem.WingType.MECHANICAL_FEATHERED));
 	public static final Item ORANGE_MECHANICAL_FEATHERED_WINGS = create("orange_mechanical_feathered_wings", new WingItem(DyeColor.WHITE, DyeColor.ORANGE, WingItem.WingType.MECHANICAL_FEATHERED));
 	public static final Item MAGENTA_MECHANICAL_FEATHERED_WINGS = create("magenta_mechanical_feathered_wings", new WingItem(DyeColor.WHITE, DyeColor.MAGENTA, WingItem.WingType.MECHANICAL_FEATHERED));
@@ -64,7 +63,6 @@ public class ModItems {
 	public static final Item GREEN_MECHANICAL_FEATHERED_WINGS = create("green_mechanical_feathered_wings", new WingItem(DyeColor.WHITE, DyeColor.GREEN, WingItem.WingType.MECHANICAL_FEATHERED));
 	public static final Item RED_MECHANICAL_FEATHERED_WINGS = create("red_mechanical_feathered_wings", new WingItem(DyeColor.WHITE, DyeColor.RED, WingItem.WingType.MECHANICAL_FEATHERED));
 	public static final Item BLACK_MECHANICAL_FEATHERED_WINGS = create("black_mechanical_feathered_wings", new WingItem(DyeColor.WHITE, DyeColor.BLACK, WingItem.WingType.MECHANICAL_FEATHERED));
-
 	public static final Item WHITE_MECHANICAL_LEATHER_WINGS = create("white_mechanical_leather_wings", new WingItem(DyeColor.WHITE, DyeColor.WHITE, WingItem.WingType.MECHANICAL_LEATHER));
 	public static final Item ORANGE_MECHANICAL_LEATHER_WINGS = create("orange_mechanical_leather_wings", new WingItem(DyeColor.WHITE, DyeColor.ORANGE, WingItem.WingType.MECHANICAL_LEATHER));
 	public static final Item MAGENTA_MECHANICAL_LEATHER_WINGS = create("magenta_mechanical_leather_wings", new WingItem(DyeColor.WHITE, DyeColor.MAGENTA, WingItem.WingType.MECHANICAL_LEATHER));
@@ -81,7 +79,6 @@ public class ModItems {
 	public static final Item GREEN_MECHANICAL_LEATHER_WINGS = create("green_mechanical_leather_wings", new WingItem(DyeColor.WHITE, DyeColor.GREEN, WingItem.WingType.MECHANICAL_LEATHER));
 	public static final Item RED_MECHANICAL_LEATHER_WINGS = create("red_mechanical_leather_wings", new WingItem(DyeColor.WHITE, DyeColor.RED, WingItem.WingType.MECHANICAL_LEATHER));
 	public static final Item BLACK_MECHANICAL_LEATHER_WINGS = create("black_mechanical_leather_wings", new WingItem(DyeColor.WHITE, DyeColor.BLACK, WingItem.WingType.MECHANICAL_LEATHER));
-
 	public static final Item WHITE_LIGHT_WINGS = create("white_light_wings", new WingItem(DyeColor.WHITE, DyeColor.WHITE, WingItem.WingType.LIGHT));
 	public static final Item ORANGE_LIGHT_WINGS = create("orange_light_wings", new WingItem(DyeColor.ORANGE, DyeColor.ORANGE, WingItem.WingType.LIGHT));
 	public static final Item MAGENTA_LIGHT_WINGS = create("magenta_light_wings", new WingItem(DyeColor.MAGENTA, DyeColor.MAGENTA, WingItem.WingType.LIGHT));
@@ -98,14 +95,13 @@ public class ModItems {
 	public static final Item GREEN_LIGHT_WINGS = create("green_light_wings", new WingItem(DyeColor.GREEN, DyeColor.GREEN, WingItem.WingType.LIGHT));
 	public static final Item RED_LIGHT_WINGS = create("red_light_wings", new WingItem(DyeColor.RED, DyeColor.RED, WingItem.WingType.LIGHT));
 	public static final Item BLACK_LIGHT_WINGS = create("black_light_wings", new WingItem(DyeColor.BLACK, DyeColor.BLACK, WingItem.WingType.LIGHT));
-
 	public static final Item FLANDRES_WINGS = create("flandres_wings", new WingItem(DyeColor.WHITE, DyeColor.WHITE, WingItem.WingType.UNIQUE));
 	public static final Item DISCORDS_WINGS = create("discords_wings", new WingItem(DyeColor.WHITE, DyeColor.WHITE, WingItem.WingType.UNIQUE));
 	public static final Item ZANZAS_WINGS = create("zanzas_wings", new WingItem(DyeColor.WHITE, DyeColor.WHITE, WingItem.WingType.UNIQUE));
 
 	//-----Registry-----//
 	public static void register() {
-		ITEMS.keySet().forEach(item -> Registry.register(Registry.ITEM, ITEMS.get(item), item));
+		ITEMS.keySet().forEach(item -> Registry.register(Registries.ITEM, ITEMS.get(item), item));
 	}
 
 	private static <T extends Item> T create(String name, T item) {
